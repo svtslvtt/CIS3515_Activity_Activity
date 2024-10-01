@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             // TODO Step 2: Implement lambda body to launch new activity and pass value
             adapter = TextSizeAdapter(textSizes){
 
+                val launchIntent = Intent(this@MainActivity, DisplayActivity::class.java)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
@@ -45,9 +46,8 @@ class TextSizeAdapter (private val textSizes: Array<Int>, callback: (Int)->Unit)
     inner class TextSizeViewHolder(val textView: TextView) : RecyclerView.ViewHolder (textView) {
         init {
             textView.setOnClickListener { textSizes[adapterPosition] }
-            }
         }
-    }
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextSizeViewHolder {
         return TextSizeViewHolder(TextView(parent.context).apply { setPadding(5, 20, 0, 20) })
