@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
             adapter = TextSizeAdapter(textSizes){
 
                 val launchIntent = Intent(this@MainActivity, DisplayActivity::class.java)
+                launchIntent.putExtra("Size", textSizes)
+                startActivity(launchIntent)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
